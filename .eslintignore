@@ -1,0 +1,4 @@
+build/**/*
+dist/**/*
+environments/**/*
+node_modules/**/*
