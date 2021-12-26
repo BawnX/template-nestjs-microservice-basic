@@ -1,0 +1,6 @@
+model UserSample {
+    id          Int     @id @default(autoincrement())
+    description String?
+    /// @Validator.MinLength(3)
+    name        String?
+}

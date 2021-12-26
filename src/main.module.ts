@@ -3,23 +3,31 @@ import { ConfigModule } from "@nestjs/config";
 import MainService from "@main/main.service";
 import { validate } from "@main/config/environment.config";
 import SampleModule from "@sample/sample.module";
-import { TypeOrmModule } from "@nestjs/typeorm";
+import { PrismaModule } from "@main/modules/prisma/prisma.module";
+import { SampleGraphqlModule } from "@main/modules/sampleGrapql/sampleGraphql.module";
+import { GraphQLModule } from "@nestjs/graphql";
 
 const ENV = process.env.NODE_ENV;
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       validate,
       envFilePath: !ENV
-        ? './environments/.env.development'
+        ? "./environments/.env.development"
         : `./environments/.env.${ENV}`,
-      isGlobal: true,
+      isGlobal: true
     }),
-    TypeOrmModule.forRoot(),
+    GraphQLModule.forRoot({
+      autoSchemaFile: 'schema.gql'
+    }),
     SampleModule,
+    PrismaModule,
+    SampleGraphqlModule
   ],
   providers: [
-    MainService,
-  ],
+    MainService
+  ]
 })
+
 export class MainModule {}

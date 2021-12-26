@@ -1,3 +1,7 @@
 dist
 node_modules
 ormconfig.json
+schema.gql
+prisma/generated
+prisma/migrations
+prisma/*.prisma

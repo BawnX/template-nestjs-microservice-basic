@@ -1,0 +1,5 @@
+model sample {
+    id          Int     @id @default(autoincrement())
+    description String?
+    name        String?
+}

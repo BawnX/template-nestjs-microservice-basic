@@ -12,4 +12,13 @@ export class EnvironmentVariables {
 
   @IsString()
   GLOBAL_TIME_ZONE: string;
+
+  @IsString()
+  DATABASE_TEO_URL: string;
+
+  @IsString()
+  DATABASE_LEGACY_URL: string;
+
+  @IsString()
+  SCHEMA_SAMPLE: string;
 }
