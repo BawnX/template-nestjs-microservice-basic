@@ -1,0 +1,17 @@
+model User {
+    @@schema("Sample")
+    id      Int     @default(autoincrement())   @id
+    name    String?
+    email   String  @unique
+    posts   Post[]
+}
+// Define the `Post` table in the database
+model Post {
+    @@schema("Sample")
+    id        Int      @default(autoincrement()) @id
+    published Boolean? @default(false)
+    title     String
+    content   String?
+    author    User?    @relation(fields: [authorId], references: [id])
+    authorId  Int?
+}
